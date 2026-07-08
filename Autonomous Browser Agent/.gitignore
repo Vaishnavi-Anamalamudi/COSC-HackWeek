@@ -1,0 +1,12 @@
+node_modules
+dist
+.env
+src/server/storage/*
+!src/server/storage/.gitkeep
+npm-debug.log*
+dev-server.log
+dev-server.err
+server.log
+server.err
+vite.log
+vite.err
