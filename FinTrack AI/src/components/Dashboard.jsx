@@ -1,3 +1,4 @@
+import { Suspense, lazy } from 'react';
 import { format, parseISO } from 'date-fns';
 import { motion } from 'framer-motion';
 import {
@@ -11,7 +12,6 @@ import {
   FiStar,
   FiZap,
 } from 'react-icons/fi';
-import Charts from './Charts';
 import SummaryCards from './SummaryCards';
 import {
   budgetUsage,
@@ -20,6 +20,21 @@ import {
   formatCurrency,
   summarizeTransactions,
 } from '../utils/helpers';
+
+const Charts = lazy(() => import('./Charts'));
+
+function ChartFallback() {
+  return (
+    <section className="grid gap-5 xl:grid-cols-2">
+      {[1, 2].map((item) => (
+        <article
+          key={item}
+          className="premium-panel h-80 animate-pulse rounded-2xl border border-white/10 p-5 shadow-glass"
+        />
+      ))}
+    </section>
+  );
+}
 
 export default function Dashboard({
   transactions,
@@ -195,7 +210,9 @@ export default function Dashboard({
               Analytics
             </button>
           </div>
-          <Charts transactions={transactions} categories={categories} currency={currency} />
+          <Suspense fallback={<ChartFallback />}>
+            <Charts transactions={transactions} categories={categories} currency={currency} />
+          </Suspense>
         </motion.article>
 
         <div className="space-y-5">

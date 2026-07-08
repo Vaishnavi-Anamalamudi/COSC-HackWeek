@@ -1,5 +1,3 @@
-import html2canvas from 'html2canvas';
-import jsPDF from 'jspdf';
 import {
   differenceInCalendarDays,
   eachMonthOfInterval,
@@ -199,6 +197,11 @@ export function downloadCsv(transactions) {
 export async function downloadPdf(elementId) {
   const element = document.getElementById(elementId);
   if (!element) return;
+
+  const [{ default: html2canvas }, { default: jsPDF }] = await Promise.all([
+    import('html2canvas'),
+    import('jspdf'),
+  ]);
 
   const canvas = await html2canvas(element, {
     backgroundColor: '#0B1120',

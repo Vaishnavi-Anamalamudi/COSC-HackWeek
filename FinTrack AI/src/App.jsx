@@ -1,9 +1,7 @@
-import { useEffect, useMemo, useState } from 'react';
+import { Suspense, lazy, useEffect, useMemo, useState } from 'react';
 import { FiDownload, FiFileText } from 'react-icons/fi';
-import AdvancedInsights from './components/AdvancedInsights';
 import BudgetManager from './components/BudgetManager';
 import CategoryManager from './components/CategoryManager';
-import Charts from './components/Charts';
 import Dashboard from './components/Dashboard';
 import ExpenseForm from './components/ExpenseForm';
 import ExpenseList from './components/ExpenseList';
@@ -24,6 +22,22 @@ import {
   summarizeTransactions,
 } from './utils/helpers';
 import { readStorage, writeStorage } from './utils/storage';
+
+const AdvancedInsights = lazy(() => import('./components/AdvancedInsights'));
+const Charts = lazy(() => import('./components/Charts'));
+
+function ChartFallback() {
+  return (
+    <section className="grid gap-5 xl:grid-cols-2">
+      {[1, 2].map((item) => (
+        <article
+          key={item}
+          className="premium-panel h-80 animate-pulse rounded-2xl border border-white/10 p-5 shadow-glass"
+        />
+      ))}
+    </section>
+  );
+}
 
 export default function App() {
   const {
@@ -108,13 +122,15 @@ export default function App() {
           monthlyBudget={budgetState.monthlyBudget}
           currency={currency}
         />
-        <Charts transactions={transactions} categories={categories} currency={currency} />
-        <AdvancedInsights
-          transactions={transactions}
-          categories={categories}
-          budgetState={budgetState}
-          currency={currency}
-        />
+        <Suspense fallback={<ChartFallback />}>
+          <Charts transactions={transactions} categories={categories} currency={currency} />
+          <AdvancedInsights
+            transactions={transactions}
+            categories={categories}
+            budgetState={budgetState}
+            currency={currency}
+          />
+        </Suspense>
         <section className="grid gap-5 lg:grid-cols-3">
           {[
             ['Monthly summary', monthly.income, monthly.expenses],
@@ -180,7 +196,9 @@ export default function App() {
             monthlyBudget={budgetState.monthlyBudget}
             currency={currency}
           />
-          <Charts transactions={transactions} categories={categories} currency={currency} />
+          <Suspense fallback={<ChartFallback />}>
+            <Charts transactions={transactions} categories={categories} currency={currency} />
+          </Suspense>
           <ExpenseList
             {...commonProps}
             onEdit={setEditingTransaction}
