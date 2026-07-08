@@ -1,0 +1,17 @@
+// Palindrome checker
+function reverse(text) {
+  let output = ""
+  for (let i = len(text) - 1; i >= 0; i = i - 1) {
+    output = output + text[i]
+  }
+  return output
+}
+
+let word = "level"
+let normalized = word.lower()
+
+if (normalized == reverse(normalized)) {
+  print(word + " is a palindrome")
+} else {
+  print(word + " is not a palindrome")
+}

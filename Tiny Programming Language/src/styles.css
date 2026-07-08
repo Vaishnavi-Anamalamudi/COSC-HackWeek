@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #08110d;
+  color: #f8fafc;
+  font-family: Inter, Segoe UI, system-ui, sans-serif;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a1510;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2b3f34;
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #47e98d;
+}
+
+.nova-button {
+  @apply inline-flex h-9 items-center justify-center gap-2 rounded border border-line bg-panelSoft px-3 text-sm font-medium text-slate-100 transition hover:border-nova/70 hover:text-nova disabled:cursor-not-allowed disabled:opacity-50;
+}
+
+.nova-button-primary {
+  @apply border-nova/60 bg-nova text-ink hover:bg-novaSoft hover:text-ink;
+}
+
+.panel-tab {
+  @apply h-9 border-b-2 border-transparent px-3 text-sm text-slate-400 transition hover:text-slate-100;
+}
+
+.panel-tab-active {
+  @apply border-nova text-nova;
+}
+
+.prism-nova .token.keyword {
+  color: #47e98d;
+}
+
+.prism-nova .token.string {
+  color: #fbbf24;
+}
+
+.prism-nova .token.number {
+  color: #67e8f9;
+}
+
+.prism-nova .token.comment {
+  color: #718096;
+}
