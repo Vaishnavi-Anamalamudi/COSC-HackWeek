@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  background: #050807;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-width: 320px;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  background:
+    radial-gradient(circle at top left, rgba(34, 197, 94, 0.18), transparent 34rem),
+    radial-gradient(circle at 92% 8%, rgba(20, 184, 166, 0.12), transparent 27rem),
+    linear-gradient(135deg, #050807 0%, #09110f 46%, #030504 100%);
+  color: #f7fff9;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+::selection {
+  background: rgba(34, 197, 94, 0.35);
+}
+
+.print-card {
+  width: 720px;
+  min-height: 420px;
+}
+
+@media print {
+  body {
+    background: #fff;
+  }
+}

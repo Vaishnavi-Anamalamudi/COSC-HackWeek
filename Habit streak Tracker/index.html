@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="HabitFlow is a premium local-first habit streak tracker with heatmaps, analytics, achievements, and reminders."
+    />
+    <meta name="theme-color" content="#22C55E" />
+    <title>HabitFlow - Habit Streak Tracker</title>
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <link rel="icon" href="./assets/icons/habitflow.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" id="sidebar" aria-label="Primary navigation">
+        <button class="brand" data-view="dashboard" aria-label="Open dashboard">
+          <span class="brand-mark">H</span>
+          <span>
+            <strong>HabitFlow</strong>
+            <small>Streak operating system</small>
+          </span>
+        </button>
+
+        <nav class="nav-list" aria-label="App sections">
+          <button class="nav-item active" data-view="dashboard">
+            <span class="nav-icon">&#8962;</span>
+            Dashboard
+          </button>
+          <button class="nav-item" data-view="habits">
+            <span class="nav-icon">&#10003;</span>
+            Habits
+          </button>
+          <button class="nav-item" data-view="calendar">
+            <span class="nav-icon">&#9638;</span>
+            Calendar
+          </button>
+          <button class="nav-item" data-view="analytics">
+            <span class="nav-icon">&#9682;</span>
+            Analytics
+          </button>
+          <button class="nav-item" data-view="settings">
+            <span class="nav-icon">&#9881;</span>
+            Settings
+          </button>
+        </nav>
+
+        <article class="sidebar-card">
+          <p class="eyebrow">Daily reminder</p>
+          <h2 id="sidebarReminder">On track today</h2>
+          <p>Complete one small action before the day gets loud.</p>
+          <button class="ghost-button" id="sidebarAddHabit" type="button">Add habit</button>
+        </article>
+      </aside>
+
+      <div class="mobile-overlay" id="mobileOverlay" hidden></div>
+
+      <main class="workspace">
+        <header class="topbar">
+          <button class="icon-button menu-button" id="menuButton" aria-label="Open navigation">
+            &#9776;
+          </button>
+          <div class="page-title">
+            <p class="eyebrow">Premium productivity</p>
+            <h1 id="viewTitle">Dashboard</h1>
+          </div>
+          <label class="search-box" for="globalSearch">
+            <span>&#8981;</span>
+            <input id="globalSearch" type="search" placeholder="Search habits, categories, notes" />
+          </label>
+          <button class="icon-button" id="themeToggle" aria-label="Toggle theme">&#9790;</button>
+          <button class="profile-chip" type="button" aria-label="Profile">
+            <span>VF</span>
+            <strong>Vaish</strong>
+          </button>
+        </header>
+
+        <section class="content" id="appContent" aria-live="polite"></section>
+      </main>
+    </div>
+
+    <dialog class="habit-dialog" id="habitDialog">
+      <form class="habit-form" id="habitForm" method="dialog">
+        <div class="dialog-header">
+          <div>
+            <p class="eyebrow">Habit builder</p>
+            <h2 id="habitDialogTitle">Add habit</h2>
+          </div>
+          <button class="icon-button" id="closeHabitDialog" type="button" aria-label="Close dialog">
+            &times;
+          </button>
+        </div>
+
+        <input id="habitId" type="hidden" />
+
+        <label>
+          Habit name
+          <input id="habitName" required maxlength="48" placeholder="Read 20 pages" />
+        </label>
+
+        <label>
+          Category
+          <select id="habitCategory"></select>
+        </label>
+
+        <label>
+          Custom category
+          <input id="customCategory" maxlength="24" placeholder="Optional" />
+        </label>
+
+        <label>
+          Daily reminder
+          <input id="habitReminder" type="time" />
+        </label>
+
+        <label>
+          Accent color
+          <input id="habitColor" type="color" value="#22C55E" />
+        </label>
+
+        <label>
+          Notes
+          <textarea id="habitNotes" rows="3" maxlength="180" placeholder="Why this habit matters"></textarea>
+        </label>
+
+        <div class="dialog-actions">
+          <button class="secondary-button" id="cancelHabitForm" type="button">Cancel</button>
+          <button class="primary-button" type="submit">Save habit</button>
+        </div>
+      </form>
+    </dialog>
+
+    <div class="toast-stack" id="toastStack" aria-live="assertive"></div>
+    <div class="achievement-popup" id="achievementPopup" hidden></div>
+
+    <script src="./script.js" type="module"></script>
+  </body>
+</html>

@@ -1,0 +1,18 @@
+// Tiny calculator
+function calculate(left, operator, right) {
+  if (operator == "+") {
+    return left + right
+  } else if (operator == "-") {
+    return left - right
+  } else if (operator == "*") {
+    return left * right
+  } else if (operator == "/") {
+    return left / right
+  }
+
+  return null
+}
+
+print("12 + 8 =", calculate(12, "+", 8))
+print("12 * 8 =", calculate(12, "*", 8))
+print("sqrt(144) =", sqrt(144))

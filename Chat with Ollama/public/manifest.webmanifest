@@ -1,0 +1,17 @@
+{
+  "name": "Ollama Studio AI",
+  "short_name": "Ollama Studio",
+  "description": "A local-first ChatGPT-style assistant for Ollama models.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0B1120",
+  "theme_color": "#22C55E",
+  "icons": [
+    {
+      "src": "/ollama-studio.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

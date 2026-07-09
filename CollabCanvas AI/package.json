@@ -1,0 +1,17 @@
+{
+  "name": "collabcanvas-ai",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Production-ready collaborative whiteboard with React, Canvas, Express, and Socket.IO.",
+  "type": "module",
+  "scripts": {
+    "install:all": "npm install --prefix client && npm install --prefix server",
+    "dev": "concurrently \"npm run dev --prefix server\" \"npm run dev --prefix client\"",
+    "build": "npm run build --prefix client",
+    "lint": "npm run lint --prefix client",
+    "start": "npm run start --prefix server"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}

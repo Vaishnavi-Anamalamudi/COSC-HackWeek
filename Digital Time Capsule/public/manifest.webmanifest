@@ -1,0 +1,17 @@
+{
+  "name": "ChronoVault AI",
+  "short_name": "ChronoVault",
+  "description": "Secure digital time capsules for future memories.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0B1120",
+  "theme_color": "#22C55E",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

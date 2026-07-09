@@ -1,0 +1,214 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background: #0b1120;
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+}
+
+button,
+a,
+input,
+select {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+::selection {
+  background: rgba(34, 197, 94, 0.35);
+}
+
+.glass-panel {
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  border-radius: 1.25rem;
+  background: linear-gradient(145deg, rgba(17, 24, 39, 0.82), rgba(15, 23, 42, 0.58));
+  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(22px);
+}
+
+.panel-heading {
+  color: #f8fafc;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.mini-tile {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1px solid rgba(51, 65, 85, 0.82);
+  border-radius: 0.9rem;
+  background: rgba(2, 6, 23, 0.44);
+  padding: 0.65rem 0.75rem;
+}
+
+.mode-card {
+  display: flex;
+  width: 100%;
+  gap: 0.75rem;
+  border: 1px solid rgba(51, 65, 85, 0.82);
+  border-radius: 1rem;
+  background: rgba(2, 6, 23, 0.36);
+  padding: 0.8rem;
+  outline: none;
+  transition: border-color 180ms ease, background 180ms ease, box-shadow 180ms ease;
+}
+
+.mode-card:hover,
+.mode-card:focus-visible,
+.mode-card-active {
+  border-color: rgba(34, 197, 94, 0.72);
+  background: rgba(34, 197, 94, 0.09);
+  box-shadow: 0 12px 40px rgba(34, 197, 94, 0.1);
+}
+
+.icon-button {
+  display: inline-flex;
+  height: 2.5rem;
+  width: 2.5rem;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(51, 65, 85, 0.9);
+  border-radius: 0.9rem;
+  background: rgba(2, 6, 23, 0.58);
+  color: #f8fafc;
+  outline: none;
+  transition: transform 160ms ease, border-color 160ms ease, background 160ms ease;
+}
+
+.icon-button:hover,
+.icon-button:focus-visible {
+  border-color: rgba(34, 197, 94, 0.75);
+  background: rgba(34, 197, 94, 0.11);
+  transform: translateY(-1px);
+}
+
+.segmented {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  border: 1px solid rgba(51, 65, 85, 0.82);
+  border-radius: 0.95rem;
+  background: rgba(2, 6, 23, 0.58);
+  padding: 0.25rem;
+}
+
+.segmented button {
+  border-radius: 0.7rem;
+  padding: 0.5rem 0.7rem;
+  color: #94a3b8;
+  font-size: 0.72rem;
+  font-weight: 700;
+  outline: none;
+  transition: background 160ms ease, color 160ms ease;
+}
+
+.segmented button:focus-visible,
+.segmented-active {
+  background: #22c55e;
+  color: #020617 !important;
+}
+
+.viewer-image {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+  transform-origin: center;
+  user-select: none;
+}
+
+.info-row {
+  display: grid;
+  grid-template-columns: 1rem 4rem minmax(0, 1fr);
+  align-items: center;
+  gap: 0.65rem;
+  border: 1px solid rgba(51, 65, 85, 0.72);
+  border-radius: 0.9rem;
+  background: rgba(2, 6, 23, 0.42);
+  padding: 0.7rem;
+  font-size: 0.75rem;
+}
+
+.history-row {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 0.65rem;
+  border: 1px solid rgba(51, 65, 85, 0.72);
+  border-radius: 0.9rem;
+  background: rgba(2, 6, 23, 0.42);
+  padding: 0.55rem;
+  outline: none;
+  transition: border-color 160ms ease, background 160ms ease;
+}
+
+.history-row:hover,
+.history-row:focus-visible {
+  border-color: rgba(34, 197, 94, 0.75);
+  background: rgba(34, 197, 94, 0.08);
+}
+
+.action-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1px solid rgba(51, 65, 85, 0.85);
+  border-radius: 0.95rem;
+  background: rgba(2, 6, 23, 0.58);
+  padding: 0.75rem 0.85rem;
+  color: #f8fafc;
+  font-size: 0.78rem;
+  font-weight: 800;
+  outline: none;
+  transition: transform 160ms ease, border-color 160ms ease, background 160ms ease;
+}
+
+.action-button svg {
+  color: #22c55e;
+}
+
+.action-button:hover:not(:disabled),
+.action-button:focus-visible {
+  border-color: rgba(34, 197, 94, 0.75);
+  background: rgba(34, 197, 94, 0.11);
+  transform: translateY(-1px);
+}
+
+.high-contrast .glass-panel {
+  border-color: rgba(248, 250, 252, 0.38);
+  background: rgba(2, 6, 23, 0.92);
+}
+
+.high-contrast .text-slate-400,
+.high-contrast .text-slate-500 {
+  color: #cbd5e1;
+}
+
+@media (max-width: 768px) {
+  .panel-heading {
+    font-size: 0.72rem;
+  }
+
+  .glass-panel {
+    border-radius: 1rem;
+  }
+}
